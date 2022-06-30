@@ -1,13 +1,17 @@
+def sum(list):
+    for i in list1:
+        print(i)
+
 n=int(input("Enter a number"))
+c = 0
+list1 = []
+while n:
+    list1.append(n%10)
+    c+=1
+    n=n//10
+list1.reverse()
 
-if n%2 == 0:
-    print("odd")
-else:
-    print("even")
+sum(list1)
 
-list1 = [1, 4, 9, 25]
-for elem in list1:
-    if elem%2 == 0:
-        print("odd")
-    else:
-        print("even")
+#print(c)
+

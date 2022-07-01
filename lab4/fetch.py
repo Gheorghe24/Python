@@ -16,5 +16,11 @@ with open("index.html", "w", encoding="utf-8") as f:
 filename = "index.html"
 tree = etree.parse(filename)
 tags = [[elem.tag, elem.attrib, elem.text] for elem in tree.iter()]
-for tag in tags:
-    print(tag)
+
+title_list = list(filter(lambda k: 'title' in k[1], tags))
+
+price_list = list(filter(lambda k: 'pull-right price' in str(k[1]), tags))
+
+with open('prices.txt', 'w') as f:
+    for title, price in zip(title_list, price_list):
+        f.write(title[2] + ' ' + price[2] + '\n')

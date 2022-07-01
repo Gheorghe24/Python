@@ -12,3 +12,9 @@ str_data = str_tree.decode()
 print("writing file")
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(str_data)
+
+filename = "index.html"
+tree = etree.parse(filename)
+tags = [[elem.tag, elem.attrib, elem.text] for elem in tree.iter()]
+for tag in tags:
+    print(tag)

@@ -8,7 +8,7 @@ class Coffee:
                 if not isinstance(budget, (int, float)):
                         print('Enter float or int')
                         exit()
-                if budget < 0: 
+                if budget < self.price: 
                     print('Sorry you don\'t have money') 
                     exit() 
         def get_change(self, budget):
@@ -25,14 +25,16 @@ class Coffee:
 
                         exit('Thanks for your transaction')
 
-small = Coffee('Small', 2)
-regular = Coffee('Regular', 5)
-big = Coffee('Big', 6)
+small = Coffee('small', 2)
+regular = Coffee('regular', 5)
+big = Coffee('big', 6)
  
 try:
    user_budget = float(input('What is your budget? '))
+   type = str(input('What type of coffee(small, regular, big)? '))
 except ValueError:
    exit('Please enter a number')
   
 for coffee in [small, regular, big]:
-   coffee.sell(user_budget)
+    if coffee.name == type:
+        coffee.sell(user_budget)

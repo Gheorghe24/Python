@@ -24,7 +24,7 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
-        with open('/mnt/d/Python/OOP_tutorial/items.csv', 'r') as f:
+        with open('OOP_tutorial/CodeCampOOP/items.csv', 'r') as f:
             reader = csv.DictReader(f)
             items = list(reader)
 

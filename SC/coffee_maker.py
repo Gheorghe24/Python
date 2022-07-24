@@ -109,11 +109,11 @@ def check_resources(coffee_type):
     return TRUE
 
 def refill_resources(resource_type):
-    print(resource_type)
-    if resource_type == "ALL":
+    if resource_type == "all":
         for resource in RESOURCES:
             RESOURCES[resource] = 100
-    elif resource_type in RESOURCES:
+        return
+    if resource_type in RESOURCES:
         RESOURCES[resource_type] = 100
         return
     else:
@@ -143,7 +143,7 @@ while True:
         elif cmd == REFILL:
             print("Which resource? Type 'all' for refilling everything")
             resource_type = input()
-            refill_resources(resource_type.upper())
+            refill_resources(resource_type)
         elif cmd == RESOURCE_STATUS:
             print_resources()
         else:

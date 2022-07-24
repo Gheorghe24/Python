@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./code_bro12hrs"
+        "./code_bro12hrs",
+        "./OOP_tutorial"
     ]
 }

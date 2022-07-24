@@ -1,7 +1,4 @@
 import csv
-from sys import float_info
-
-
 class Item:
     pay_rate = 0.8  # The pay rate after 20% discount
     all = []
@@ -54,27 +51,3 @@ class Item:
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.name}',{self.price},{self.quantity}) "
 
-
-class Phone(Item):
-    # all = []
-
-    def __init__(self, name: str, price: float, quantity=0, broken_phones=0) -> None:
-        #Call to super function to have access to all atributes/ methods
-        super().__init__(name, price, quantity)
-        # Run validation to the received arguments
-        
-        assert broken_phones >= 0, f"Broken Phones {broken_phones} is not greater than zero"
-
-        # Assign to self object
-        self.broken_phones = broken_phones
-
-        # Actions to execute
-        # Phone.all.append(self)
-
-
-phone1 = Phone("iPHONE10", 500, 10,1)
-print(phone1.calculate_total_price())
-phone2 = Item("iPHONE9", 300, 10)
-
-print(Item.all)
-print(Phone.all)

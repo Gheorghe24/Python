@@ -4,6 +4,7 @@ A command-line controlled coffee maker.
 
 from pickle import TRUE
 import sys
+from load_recipes import *
 
 # from SC.sol.coffee_maker import make_coffee, print_available_commands, print_resources, refill_resources
 
@@ -52,11 +53,8 @@ WATER = "water"
 COFFEE = "coffee"
 MILK = "milk"
 
-coffee_types = {ESPRESSO: {WATER: 5, COFFEE: 10, MILK: 0},
-                AMERICANO: {WATER: 10, COFFEE: 50, MILK: 0},
-                CAPPUCCINO: {WATER: 5, COFFEE: 10, MILK: 10}}
 # Coffee maker's resources - the values represent the fill percents
-
+coffee_types = load_all_recipes()
 RESOURCES = {WATER: 100, COFFEE: 100, MILK: 100}
 
 """

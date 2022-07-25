@@ -21,9 +21,8 @@ def load_recipe(filename):
             line_parts = line.split("=")
             if len(line_parts) != 2:
                 print("Incorrect file format, resources should be listed as: resource=percent")
-            resources[line_parts[0]] = int(line_parts[1].strip())
+            resources[line_parts[0]] = int(line_parts[1])
     return coffee_type, resources
-
 
 def load_all_recipes():
 	
@@ -38,4 +37,4 @@ def load_all_recipes():
 	
 	return recipes
 
-print(load_all_recipes())
+# print(type(load_all_recipes()))

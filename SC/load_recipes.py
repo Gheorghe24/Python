@@ -9,5 +9,33 @@
 		https://docs.python.org/3/library/io.html
 		https://docs.python.org/3/library/os.path.html
 """
+import os
+RECIPES_FOLDER = "SC/recipes"
 
-RECIPES_FOLDER = "recipes"
+def load_recipe(filename):
+    
+    resources = {}
+    with open(filename) as recipe_file:
+        coffee_type = recipe_file.readline().strip()
+        for line in recipe_file.readlines():
+            line_parts = line.split("=")
+            if len(line_parts) != 2:
+                print("Incorrect file format, resources should be listed as: resource=percent")
+            resources[line_parts[0]] = int(line_parts[1].strip())
+    return coffee_type, resources
+
+
+def load_all_recipes():
+	
+	if not os.path.exists(RECIPES_FOLDER) or not os.path.isdir(RECIPES_FOLDER):
+		print("No recipes folder")
+		return None
+
+	recipes = {}
+	for recipe_file in os.listdir(RECIPES_FOLDER):
+		(recipe_name, resources) = load_recipe(os.path.join(RECIPES_FOLDER, recipe_file))
+		recipes[recipe_name] = resources
+	
+	return recipes
+
+print(load_all_recipes())

@@ -124,28 +124,30 @@ def print_resources():
     for elem in RESOURCES:
         print(f"{elem} : {RESOURCES[elem]}%")
 
-print("I'm a simple coffee maker")
-while True:
-        print("Enter command:\t")
-        cmd = input().lower()
-        if cmd == EXIT or cmd == "":
-            break
-        elif cmd == HELP:
-            print_available_commands()
-        elif cmd == LIST_COFFEES:
-            for elem in coffee_types.keys():
-                print(elem, end = " ")
-            print()
-        elif cmd == MAKE_COFFEE:
-            print("Which coffee?")
-            coffee_type = input().lower()
-            make_coffee(coffee_type)
-        elif cmd == REFILL:
-            print("Which resource? Type 'all' for refilling everything")
-            resource_type = input()
-            refill_resources(resource_type)
-        elif cmd == RESOURCE_STATUS:
-            print_resources()
-        else:
-            print("Unknown command")
+if __name__ == "__main__":
+
+    print("I'm a simple coffee maker")
+    while True:
+            print("Enter command:\t")
+            cmd = input().lower()
+            if cmd == EXIT or cmd == "":
+                break
+            elif cmd == HELP:
+                print_available_commands()
+            elif cmd == LIST_COFFEES:
+                for elem in coffee_types.keys():
+                    print(elem, end = " ")
+                print()
+            elif cmd == MAKE_COFFEE:
+                print("Which coffee?")
+                coffee_type = input().lower()
+                make_coffee(coffee_type)
+            elif cmd == REFILL:
+                print("Which resource? Type 'all' for refilling everything")
+                resource_type = input()
+                refill_resources(resource_type)
+            elif cmd == RESOURCE_STATUS:
+                print_resources()
+            else:
+                print("Unknown command")
 

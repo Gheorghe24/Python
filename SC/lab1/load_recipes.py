@@ -10,7 +10,7 @@
 		https://docs.python.org/3/library/os.path.html
 """
 import os
-RECIPES_FOLDER = "SC/recipes"
+RECIPES_FOLDER = "SC/lab1/recipes"
 
 def load_recipe(filename):
     

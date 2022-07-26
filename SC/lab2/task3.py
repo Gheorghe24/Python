@@ -115,7 +115,8 @@ class CoffeeFactory:
         """ Infinite loop for execution """
         while True:
             coffee_class = get_random_type()
-            self.distributor.produce(coffee_class(get_random_size()), self.name)
+            size = get_random_size()
+            self.distributor.produce(coffee_class(size), self.name)
 
 
 class User:

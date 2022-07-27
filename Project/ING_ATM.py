@@ -1,8 +1,9 @@
-from email import message
 from pickle import TRUE
 import random
 import sys
 from datetime import datetime
+import yaml
+
 
 # Account creation
 # Check Account Details
@@ -26,24 +27,29 @@ class ATM():
         print(f"Your balance : {self.balance}")
 
     def check_balance(self):
-        now = datetime.now()
-
-        current_time = now.strftime("%H:%M:%S")
-        print("Current Time =", current_time)
+        print("Current Time =", self.get_time())
         print(f"Your balance : {self.balance}")
 
     def deposit(self, ammount : int, message : str):
-        ATM.actions[ATM.i] = [ammount, message]
+        ATM.actions[ATM.i] = [ammount, message, self.get_time()]
         ATM.i += 1
         self.balance+=ammount
 
+    def get_time():
+        now = datetime.now()
+        return now.strftime("%H:%M:%S")
+
     def withdraw(self, ammount : int, message : str):
         if self.balance-ammount >= 0:
-            ATM.actions[ATM.i] = [ammount, message]
+            ATM.actions[ATM.i] = [ammount, message, self.get_time()]
             ATM.i += 1
             self.balance-=ammount
         else: 
             print("Sorry, you have insufficient balance")
+    
+    def track_withdrawals(self):
+        for keys, values in ATM.actions.items():
+            print("Ammount: ", values[0], "\nMessage: ", values[1], "\n")
     
     def transaction(self):
         print("""
@@ -52,27 +58,38 @@ class ATM():
         2 - Check your balance
         3 - Deposit in account
         4 - Withdraw 
-        5 - Exit 
+        5 - Track your withdrawals
+        6 - Exit 
         """)
-        lst = [i for i in range(1,6)]
+        lst = [i for i in range(1,7)]
         while TRUE:
             trans = int(input("Choose one of this numbers: "))
             if trans in lst :
                 if trans == 1:
                     self.account_details()
-                if trans == 2:
+                elif trans == 2:
                     self.check_balance()
-                if trans == 3:
-                    ammount = int(input("How much you want to add : "))
+                elif trans == 3:
+                    try:
+                        ammount = int(input("How much you want to add : "))
+                    except:
+                        print("Input an integer value")
                     message = input("Transaction message: ")
                     self.deposit(ammount, message)
-                if trans == 4:
-                    ammount = int(input("How much you want to withdraw : "))
+                elif trans == 4:
+                    try:
+                        ammount = int(input("How much you want to withdraw : "))
+                    except:
+                        print("Input an integer value")
                     message = input("Transaction message: ")
                     self.withdraw(ammount, message)
-                if trans == 5:
+                elif trans == 6:
                     return False
                     break
+                elif trans == 5:
+                    self.track_withdrawals()
+                else :
+                    print("Wrong command!  Enter one of the available numbers.\n")
 
 
 

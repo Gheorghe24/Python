@@ -1,5 +1,3 @@
-from distutils.file_util import write_file
-from pickle import TRUE
 import random
 import sys
 from datetime import datetime
@@ -16,21 +14,23 @@ import yaml
 class ATM():
     actions = {}
     i = 0
-    def __init__(self, name : str, accont_number : str , balance = 0) -> None:
+    def __init__(self, name : str, accont_number : str ,pin , balance = 0) -> None:
         self.name = name
         self.account_number = accont_number
         self.balance = balance
+        self.__pin = pin
     @staticmethod
     def get_time():
         now = datetime.now()
         return now.strftime("%H:%M:%S")
-    @staticmethod
-    def write_in_file():
+    
+    def write_in_file(self):
 
         original_stdout = sys.stdout # Save a reference to the original standard output
 
         with open('/mnt/d/Python/Project/check.txt', 'w') as f:
             sys.stdout = f # Change the standard output to the file we created.
+            self.account_details()
             for keys, values in ATM.actions.items():
                 print("Ammount: ", values[0], "\nMessage: ", values[1], "\nTime: ",values[2], "\n")
             sys.stdout = original_stdout
@@ -39,7 +39,7 @@ class ATM():
         print("*******ACCOUNT DETAILS*******")
         print(f"Your account name : {self.name}")
         print(f"Your account number: {self.account_number}")
-        print(f"Your balance : {self.balance}")
+        print(f"Your balance : {self.balance}\n")
 
     def check_balance(self):
         print("Current Time =", ATM.get_time())
@@ -65,6 +65,10 @@ class ATM():
 
     
     def transaction(self):
+        pin_input = input("Enter your pin number: ")
+        if pin_input != self.__pin:
+            print("Sorry, you entered the pin inccorectly")
+            return
         print("""
         You can choose one of this commands:
         1 - See your account details
@@ -75,7 +79,7 @@ class ATM():
         6 - Exit 
         """)
         lst = [i for i in range(1,7)]
-        while TRUE:
+        while True:
             trans = int(input("Choose one of this numbers: "))
             if trans in lst :
                 if trans == 1:
@@ -97,7 +101,7 @@ class ATM():
                     message = input("Transaction message: ")
                     self.withdraw(ammount, message)
                 elif trans == 6:
-                    ATM.write_in_file()
+                    self.write_in_file()
                     return False
                     break
                 elif trans == 5:
@@ -114,9 +118,12 @@ if __name__ == "__main__":
     print("----------ACCOUNT CREATION----------")
     name = input("Enter your name: ")
     account_number = input("Enter your account number: ")
+    pin = input("Enter your pin number: ")
+    while len(pin) != 4:
+        pin = input("Enter a valid pin number: ")
     print("Congratulations! Account created successfully......\n")
     
-    atm = ATM(name, account_number)
+    atm = ATM(name, account_number, pin)
     
     while True:
         trans = input("Do you want to do any transaction?(y/n):")

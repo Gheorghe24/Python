@@ -1,0 +1,12 @@
+*******ACCOUNT DETAILS*******
+Your account name : Gheorghe24
+Your account number: 000111000111
+Your balance : 800
+Ammount:  1000 
+Message:  salary 
+Time:  12:42:03 
+
+Ammount:  200 
+Message:  lost my money 
+Time:  12:42:15 
+

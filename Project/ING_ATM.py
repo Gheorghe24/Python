@@ -1,3 +1,4 @@
+from distutils.file_util import write_file
 from pickle import TRUE
 import random
 import sys
@@ -19,6 +20,20 @@ class ATM():
         self.name = name
         self.account_number = accont_number
         self.balance = balance
+    @staticmethod
+    def get_time():
+        now = datetime.now()
+        return now.strftime("%H:%M:%S")
+    @staticmethod
+    def write_in_file():
+
+        original_stdout = sys.stdout # Save a reference to the original standard output
+
+        with open('/mnt/d/Python/Project/check.txt', 'w') as f:
+            sys.stdout = f # Change the standard output to the file we created.
+            for keys, values in ATM.actions.items():
+                print("Ammount: ", values[0], "\nMessage: ", values[1], "\nTime: ",values[2], "\n")
+            sys.stdout = original_stdout
 
     def account_details(self):
         print("*******ACCOUNT DETAILS*******")
@@ -27,21 +42,18 @@ class ATM():
         print(f"Your balance : {self.balance}")
 
     def check_balance(self):
-        print("Current Time =", self.get_time())
+        print("Current Time =", ATM.get_time())
         print(f"Your balance : {self.balance}")
 
     def deposit(self, ammount : int, message : str):
-        ATM.actions[ATM.i] = [ammount, message, self.get_time()]
+        ATM.actions[ATM.i] = [ammount, message, ATM.get_time()]
         ATM.i += 1
         self.balance+=ammount
 
-    def get_time():
-        now = datetime.now()
-        return now.strftime("%H:%M:%S")
 
     def withdraw(self, ammount : int, message : str):
         if self.balance-ammount >= 0:
-            ATM.actions[ATM.i] = [ammount, message, self.get_time()]
+            ATM.actions[ATM.i] = [ammount, message, ATM.get_time()]
             ATM.i += 1
             self.balance-=ammount
         else: 
@@ -49,7 +61,8 @@ class ATM():
     
     def track_withdrawals(self):
         for keys, values in ATM.actions.items():
-            print("Ammount: ", values[0], "\nMessage: ", values[1], "\n")
+            print("Ammount: ", values[0], "\nMessage: ", values[1], "\nTime: ",values[2], "\n")
+
     
     def transaction(self):
         print("""
@@ -84,6 +97,7 @@ class ATM():
                     message = input("Transaction message: ")
                     self.withdraw(ammount, message)
                 elif trans == 6:
+                    ATM.write_in_file()
                     return False
                     break
                 elif trans == 5:
@@ -118,3 +132,10 @@ if __name__ == "__main__":
             break
         else:
             print("Wrong command!  Enter 'y' for YES and 'n' for NO.\n")
+    
+    # original_stdout = sys.stdout # Save a reference to the original standard output
+
+    # with open('/mnt/d/Python/Project/filename.txt', 'w') as f:
+    #     sys.stdout = f # Change the standard output to the file we created.
+    #     print("111111111111111111111")
+    #     sys.stdout = original_stdout

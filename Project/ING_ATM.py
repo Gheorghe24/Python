@@ -1,7 +1,13 @@
 import random
 import sys
 from datetime import datetime
-import yaml
+import getpass
+
+
+def random_with_N_digits(n):
+    range_start = 10**(n-1)
+    range_end = (10**n)-1
+    return random.randint(range_start, range_end)
 
 
 # Account creation
@@ -117,8 +123,8 @@ if __name__ == "__main__":
     print("___________________________________________________________\n")
     print("----------ACCOUNT CREATION----------")
     name = input("Enter your name: ")
-    account_number = input("Enter your account number: ")
-    pin = input("Enter your pin number: ")
+    account_number = random_with_N_digits(8)
+    pin = getpass.getpass('Enter your pin number:')
     while len(pin) != 4:
         pin = input("Enter a valid pin number: ")
     print("Congratulations! Account created successfully......\n")
@@ -140,9 +146,4 @@ if __name__ == "__main__":
         else:
             print("Wrong command!  Enter 'y' for YES and 'n' for NO.\n")
     
-    # original_stdout = sys.stdout # Save a reference to the original standard output
 
-    # with open('/mnt/d/Python/Project/filename.txt', 'w') as f:
-    #     sys.stdout = f # Change the standard output to the file we created.
-    #     print("111111111111111111111")
-    #     sys.stdout = original_stdout

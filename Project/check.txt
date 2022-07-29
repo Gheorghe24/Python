@@ -1,12 +1,13 @@
 *******ACCOUNT DETAILS*******
-Your account name : Gheorghe24
-Your account number: 000111000111
+Your account name : Gheorghe
+Your account number: 80536395
 Your balance : 800
+
 Ammount:  1000 
-Message:  salary 
-Time:  12:42:03 
+Message:  miiiiii 
+Time:  11:43:15 
 
 Ammount:  200 
-Message:  lost my money 
-Time:  12:42:15 
+Message:  oop 
+Time:  11:43:24 
 

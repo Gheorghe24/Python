@@ -149,4 +149,11 @@ if __name__ == "__main__":
         else:
             print("Wrong command!  Enter 'y' for YES and 'n' for NO.\n")
     
+    import json
+  
+    with open('convert.txt', 'a') as convert_file:
+        convert_file.write("\n" + atm.name)
+        convert_file.write("\n" + str(atm.account_number))
+        convert_file.write("\n" + json.dumps(ATM.actions) + "\n")
+    
 

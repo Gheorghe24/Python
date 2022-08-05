@@ -1,6 +1,6 @@
-### To run this python atm program, follow the below steps:
+### To run this python ATM program, follow the below steps:
 
-- Create a new folder for this atm python project.
+- Create a new folder for this ATM python project.
 - Open it in a code editor of your choice.
 - Create a python file with an ending .py extension.
 - Copy the above code and paste it in your file.

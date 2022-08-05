@@ -18,8 +18,10 @@ def random_with_N_digits(n):
 # Exit with a transaction receipt
 
 class ATM():
+
     actions = {}
     i = 0
+
     def __init__(self, name : str, accont_number : str ,pin , balance = 0) -> None:
         self.name = name
         self.account_number = accont_number
@@ -86,6 +88,7 @@ class ATM():
         """)
         lst = [i for i in range(1,7)]
         while True:
+            print()
             trans = int(input("Choose one of this numbers: "))
             if trans in lst :
                 if trans == 1:

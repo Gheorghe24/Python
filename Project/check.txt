@@ -1,13 +1,13 @@
 *******ACCOUNT DETAILS*******
 Your account name : Gheorghe
-Your account number: 80536395
-Your balance : 800
+Your account number: 66032866
+Your balance : 78
 
-Ammount:  1000 
-Message:  miiiiii 
-Time:  11:43:15 
+Ammount:  100 
+Message:  MIMI 
+Time:  17:30:02 
 
-Ammount:  200 
-Message:  oop 
-Time:  11:43:24 
+Ammount:  22 
+Message:  MOOO 
+Time:  17:30:08 
 

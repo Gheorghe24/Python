@@ -1,4 +1,4 @@
-# LearnPython
+# LearnPython with me
 Enterprise Data Warehouse and Information Systems
 -------------------------------------------------
 Authors:
